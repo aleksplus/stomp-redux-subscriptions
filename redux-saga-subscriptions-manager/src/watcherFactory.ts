@@ -1,4 +1,4 @@
-import { takeEvery} from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga/effects';
 
 import {
   createSubscriptionHandler,
@@ -13,7 +13,7 @@ const parseOptions = (options: SubscriptionOptions) => ({
   errorType: options.errorType || ''
 });
 
-export const createSubscriptionWatcher = (options : SubscriptionOptions, createChannel) => function *() {
+export const createSubscriptionWatcher = (options: SubscriptionOptions, createChannel) => function* () {
   if (!options.subIdentifier) throw new Error('OursubIdentifier is required');
 
   const { subIdentifier, startType, stopType, errorType, selector } = parseOptions(options);
