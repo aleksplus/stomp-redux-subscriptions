@@ -22,8 +22,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "redux": "^4.0.4",
-    "redux-saga": "^1.3.0",
     "@p.aleks/redux-subscriptions-manager": "0.0.1"
   },
   "devDependencies": {
@@ -35,5 +33,13 @@
     "rimraf": "^5.0.5",
     "ts-loader": "^9.5.1",
     "typescript": "^4.9.5"
+  },
+  "description": "Do not use in new projects.",
+  "bugs": {
+    "url": "https://github.com/aleksplus/stomp-redux-subscriptions/issues"
+  },
+  "homepage": "https://github.com/aleksplus/stomp-redux-subscriptions#readme",
+  "directories": {
+    "lib": "lib"
   }
 }
