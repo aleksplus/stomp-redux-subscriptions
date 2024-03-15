@@ -1,9 +1,8 @@
 {
   "name": "@p.aleks/redux-subscriptions-manager",
-  "typings": "src/index.ts",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "license": "MIT",
   "author": "Aleks P. (https://github.com/aleksplus)",
   "repository": {
@@ -12,23 +11,13 @@
   },
   "scripts": {
     "format": "npx prettier -w src/** --single-quote ",
-    "prepublish": "npm run build && npx json -f package.json -I -e \"delete this.devDependencies\" && npx json -f package.json -I -e \"delete this.scripts\"",
+    "prepublish": "npm run build && npx json -f package.json -I -e \"delete this.devDependencies\" && npx json -f package.json -I -e \"this.scripts = {}\"",
     "build": "npm run build:es && npm run build:es5",
     "build:es": "rimraf types/ && rimraf es/ && tsc --declaration --declarationDir types/",
     "build:es5": "rimraf lib/ && babel -d lib/ es/"
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.23.9",
-    "@babel/core": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "@babel/preset-react": "^7.23.3",
-    "@types/lodash": "^4.17.0",
-    "rimraf": "^5.0.5",
-    "ts-loader": "^9.5.1",
-    "typescript": "^4.9.5"
   },
   "description": "Do not use in new projects.",
   "files": [
@@ -38,7 +27,7 @@
     "LICENSE",
     "package.json"
   ],
-  "types": "./types/index.d.ts",
+  "typings": "./types/index.d.ts",
   "bugs": {
     "url": "https://github.com/aleksplus/stomp-redux-subscriptions/issues"
   },
