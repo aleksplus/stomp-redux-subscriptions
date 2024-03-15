@@ -14,7 +14,7 @@
     "format": "npx prettier -w src/** --single-quote ",
     "prepublish": "npm run build && npx json -f package.json -I -e \"delete this.devDependencies\" && npx json -f package.json -I -e \"delete this.scripts\"",
     "build": "npm run build:es && npm run build:es5",
-    "build:es": "rimraf es/ && tsc",
+    "build:es": "rimraf types/ && rimraf es/ && tsc --declaration --declarationDir types/",
     "build:es5": "rimraf lib/ && babel -d lib/ es/"
   },
   "dependencies": {
@@ -32,20 +32,13 @@
   },
   "description": "Do not use in new projects.",
   "files": [
-    "src",
     "lib",
+    "types",
     "README.md",
     "LICENSE",
     "package.json"
   ],
-  "exports": {
-    ".": {
-      "import": "./src/index.js",
-      "require": "./lib/index.js"
-    },
-    "./lib/*": "./lib/*",
-    "./src/*": "./src/*"
-  },
+  "types": "./types/index.d.ts",
   "bugs": {
     "url": "https://github.com/aleksplus/stomp-redux-subscriptions/issues"
   },
