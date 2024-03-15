@@ -36,11 +36,23 @@
     "typescript": "^4.9.5"
   },
   "description": "Do not use in new projects.",
+  "files": [
+    "src",
+    "lib",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./lib/index.js"
+    },
+    "./lib/*": "./lib/*",
+    "./src/*": "./src/*"
+  },
   "bugs": {
     "url": "https://github.com/aleksplus/stomp-redux-subscriptions/issues"
   },
-  "homepage": "https://github.com/aleksplus/stomp-redux-subscriptions#readme",
-  "directories": {
-    "lib": "lib"
-  }
+  "homepage": "https://github.com/aleksplus/stomp-redux-subscriptions#readme"
 }

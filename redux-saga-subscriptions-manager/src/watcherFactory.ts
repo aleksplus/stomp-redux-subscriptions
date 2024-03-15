@@ -27,9 +27,9 @@ export const createSubscriptionWatcher = (
     const { subIdentifier, startType, stopType, errorType, selector } =
       parseOptions(options);
 
-    const startSubscriptionHandler = createStartHandler(flatten([stopType, errorType]))(
-      createChannel,
-    );
+    const startSubscriptionHandler = createStartHandler(
+      flatten([stopType, errorType]),
+    )(createChannel);
     const restartHandler = createErrorHandler(startType, stopType);
     const subscribeHandler = createSubscriptionHandler(
       selector,
