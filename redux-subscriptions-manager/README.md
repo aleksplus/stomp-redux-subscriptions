@@ -1,3 +1,8 @@
+# DEPRECATED
+Do not use in new projects.
+
+#### Fork of [@jaszczw/stomp-redux-subscriptions](https://github.com/jaszczw/stomp-redux-subscriptions) version, add types, minor changed.
+
 # Motivation
 
 //TODO WJ: ADd d.ts files for typescript code.
@@ -47,7 +52,7 @@ Usage looks like this:
 
 ```typescript jsx
 
-import { createReducer } from 'redux-subscriptions-manager';
+import { createReducer } from '@p.aleks/redux-subscriptions-manager';
 
 //reducer.ts
 combineReducers<ReduxState>({
@@ -56,13 +61,13 @@ combineReducers<ReduxState>({
 });
 
 //actions.ts
-import { subscriptionActions } from 'redux-subscriptions-manager';
+import { subscriptionActions } from '@p.aleks/redux-subscriptions-manager';
 
 export const patientsSubscriptions = subscriptionActions(PATIENTS_SUBSCRIPTIONS);
 
 
 //selectors.ts
-import { getSubscriptions } from 'redux-subscriptions-manager';
+import { getSubscriptions } from '@p.aleks/redux-subscriptions-manager';
 
 export const getPatientsSubscriptions = (state: ReduxState, payload) => 
   getSubscriptions(state.patientsSubscriptions, payload)
@@ -121,10 +126,7 @@ const result = getPatientsSubscriptions(store.getState(), {id: 1});
 The result isn't too astounding and could be achieved quite easily writing down whole code, but there is just no need for rewriting this each time we want to add subscriptions.
 
 
-To see the full power of this library use it with conjuction with `redux-saga-subscriptions-manager` and you will see, full benefit of it.
-
-You can also consider checking out the 'simple-example' in `examples/simple-subscriptions` folder
-
+To see the full power of this library use it with conjuction with `@p.aleks/redux-saga-subscriptions-manager` and you will see, full benefit of it.
 
 
 

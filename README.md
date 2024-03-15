@@ -1,9 +1,13 @@
+# DEPRECATED
+Do not use in new projects.
+
+#### Fork of [@jaszczw/stomp-redux-subscriptions](https://github.com/jaszczw/stomp-redux-subscriptions) version, add types, minor changed.
+
 # Example usages
 
 There are three libraries in this repository.
 
-- stomp-subscriptions
-- redux-subscriptions
+- redux-subscriptions-manager
 - redux-saga-subscriptions
 
 They can be used separately to achieve 'reactive' application that is aware of changes on backend, without per case pooling/fetches.

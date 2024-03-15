@@ -1,3 +1,8 @@
+# DEPRECATED
+Do not use in new projects.
+
+#### Fork of [@jaszczw/stomp-redux-subscriptions](https://github.com/jaszczw/stomp-redux-subscriptions) version, add types, minor changed.
+
 # API
 
 High-level description of API.
@@ -14,8 +19,8 @@ interface SubscriptionOptions {
   subIdentifier: string;
   selector: ((state, payload) => any[]) | ((state) => any[]);
   startType?: string;
-  stopType?: string;
-  errorType?: string;
+  stopType?: string | string[];
+  errorType?: string | string[];
 }
 
 interface handler extends GeneratorFunction;
@@ -23,7 +28,7 @@ interface handler extends GeneratorFunction;
 
 ## Use cases:
 
-Library works best together with `redux-subscriptions-manager` - reduced state, but can be used without it.
+Library works best together with `@p.aleks/redux-subscriptions-manager` - reduced state, but can be used without it.
 
 Problem it solves: maintaining multiple subscriptions with different payloads, handling cleanup and creation for actions.
 
@@ -116,7 +121,7 @@ export const watchPatientsSubscription = createSubscriptionWatcher({
 Code about would work with assumption that:
 
 There are actions of `type: PATIENTS_SUBSCRIPTIONS` dispatched with methods argument of
-`SUBSCRIBE/UNSBUSCRIBE` from `redux-subscriptions-manager` and optional `payload`.
+`SUBSCRIBE/UNSBUSCRIBE` from `@p.aleks/redux-subscriptions-manager` and optional `payload`.
 (Exactly what library creates when used as in readme);
 
 From selector it expects that it will take `(globalState, payload) => any[]`.
