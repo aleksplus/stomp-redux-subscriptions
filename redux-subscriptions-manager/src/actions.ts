@@ -1,20 +1,29 @@
-import {SUBSCRIPTIONS_SUBSCRIBE, SUBSCRIPTIONS_UNSUBSCRIBE} from './constants';
+import {
+  SUBSCRIPTIONS_SUBSCRIBE,
+  SUBSCRIPTIONS_UNSUBSCRIBE,
+} from './constants';
+
+export type SubscribeAction = {
+  type: string;
+  payload?: any;
+  method?: typeof SUBSCRIPTIONS_SUBSCRIBE | typeof SUBSCRIPTIONS_UNSUBSCRIBE;
+};
 
 export const subscriptionActions = (type) => {
-  const subscribe = (payload?) => ({
+  const subscribe = (payload?: any): SubscribeAction => ({
     type: type,
     method: SUBSCRIPTIONS_SUBSCRIBE,
-    payload
+    payload,
   });
 
-  const unsubscribe = (payload?) => ({
+  const unsubscribe = (payload?: any): SubscribeAction => ({
     type: type,
     method: SUBSCRIPTIONS_UNSUBSCRIBE,
-    payload
+    payload,
   });
 
   return {
     subscribe,
-    unsubscribe
+    unsubscribe,
   };
 };

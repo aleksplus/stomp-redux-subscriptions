@@ -1,12 +1,14 @@
+import { EventChannel } from 'redux-saga';
 import { takeEvery } from 'redux-saga/effects';
 
 import {
-  createSubscriptionHandler,
-  createStartHandler,
   createErrorHandler,
+  createStartHandler,
+  createSubscriptionHandler,
 } from './handlersFactories';
+import { SubscriptionOptions } from './types';
 
-const parseOptions = (options: SubscriptionOptions): SubscriptionOptions => ({
+const parseOptions = (options: SubscriptionOptions) => ({
   ...options,
   startType: options.startType || `${options.subIdentifier}/START`,
   stopType: options.stopType || `${options.subIdentifier}/STOP`,
@@ -15,10 +17,11 @@ const parseOptions = (options: SubscriptionOptions): SubscriptionOptions => ({
 
 export const createSubscriptionWatcher = (
   options: SubscriptionOptions,
-  createChannel,
+  createChannel: (payload: any) => EventChannel<any>,
 ) =>
-  function* () {
-    if (!options.subIdentifier) throw new Error('OursubIdentifier is required');
+  function* (): Generator<any, any, any> {
+    if (!options.subIdentifier)
+      throw new Error('Our subIdentifier is required');
 
     const { subIdentifier, startType, stopType, errorType, selector } =
       parseOptions(options);
@@ -40,11 +43,3 @@ export const createSubscriptionWatcher = (
       yield takeEvery(errorType, restartHandler);
     }
   };
-
-interface SubscriptionOptions {
-  subIdentifier: string;
-  selector: ((state, payload) => any[]) | ((state) => any[]);
-  startType?: string;
-  stopType?: string;
-  errorType?: string;
-}

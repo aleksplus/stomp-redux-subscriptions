@@ -1,30 +1,28 @@
 import {
-  select,
-  cancel,
-  fork,
-  race,
-  take,
-  put,
   call,
-} from "redux-saga/effects";
-import { delay } from "redux-saga/effects";
-import isEqual from "lodash/isEqual";
+  cancel,
+  delay,
+  fork,
+  put,
+  race,
+  select,
+  take,
+} from 'redux-saga/effects';
+import { EventChannel } from 'redux-saga';
+import isEqual from 'lodash/isEqual';
 
 import {
   SUBSCRIPTIONS_SUBSCRIBE,
   SUBSCRIPTIONS_UNSUBSCRIBE,
-} from "redux-subscriptions-manager";
+} from '@p.aleks/redux-subscriptions-manager';
+import { ServiceAction } from './types';
 
 const SUB_RECONNECT_TIMEOUT = 5000;
 
-export type ServiceAction = {
-  type: string;
-  payload?: any;
-  error?: any;
-  method?: typeof SUBSCRIPTIONS_SUBSCRIBE | typeof SUBSCRIPTIONS_UNSUBSCRIBE;
-};
-
-function* channelHandling(createChannel, action) {
+function* channelHandling(
+  createChannel: (payload: any) => EventChannel<any>,
+  action: ServiceAction,
+): Generator<any, any, any> {
   const channel = yield call(createChannel, action.payload);
 
   try {
@@ -38,11 +36,12 @@ function* channelHandling(createChannel, action) {
 }
 
 export const createStartHandler =
-  (stopSubActions: string[]) => (createChannel) =>
-    function* (action: ServiceAction): any {
+  (stopSubActions: string[]) =>
+  (createChannel: (payload: any) => EventChannel<any>) =>
+    function* (action: ServiceAction): Generator<any, any, any> {
       const task = yield fork(channelHandling, createChannel, action);
 
-      const stopPredicate = ({ type }) => {
+      const stopPredicate = ({ type }: ServiceAction) => {
         return stopSubActions.includes(type);
       };
 
@@ -63,40 +62,52 @@ export const createStartHandler =
 export const createSubscriptionHandler = (
   selector: SubscriptionsSelector,
   startType: string,
-  stopType: string,
+  stopType: string | string[],
 ) =>
-  function* ({ payload, method }: ServiceAction): any {
+  function* ({ payload, method }: ServiceAction): Generator<any, any, any> {
     const subscriptionsState = yield select(selector, payload);
     const subCount = subscriptionsState.length;
 
-    let firstSub = subCount === 1 && method === SUBSCRIPTIONS_SUBSCRIBE;
-    let lastUnSub = subCount === 0 && method === SUBSCRIPTIONS_UNSUBSCRIBE;
+    const firstSub = subCount === 1 && method === SUBSCRIPTIONS_SUBSCRIBE;
+    const lastUnSub = subCount === 0 && method === SUBSCRIPTIONS_UNSUBSCRIBE;
 
     if (firstSub) {
       yield put({ type: startType, payload });
     }
 
     if (lastUnSub) {
-      yield put({ type: stopType, payload });
+      if (Array.isArray(stopType)) {
+        for (const type of stopType) {
+          yield put({ type: type, payload });
+        }
+      } else {
+        yield put({ type: stopType, payload });
+      }
     }
   };
 
 export const createErrorHandler = (
-  startType,
-  stopType,
+  startType: string,
+  stopType: string | string[],
   reconnectTimeout = SUB_RECONNECT_TIMEOUT,
 ) =>
-  function* ({ payload }: ServiceAction): any {
+  function* ({ payload }: ServiceAction): Generator<any, any, any> {
     console.info(
       `'Will restart subscription in ${reconnectTimeout / 1000} seconds`,
     );
 
-    //Stop current sub
-    yield put({ type: stopType, payload });
+    // Stop current sub
+    if (Array.isArray(stopType)) {
+      for (const type of stopType) {
+        yield put({ type: type, payload });
+      }
+    } else {
+      yield put({ type: stopType, payload });
+    }
 
-    //Race between state induced STOP - meaning we no longer subscribe and reconnect timeout
+    // Race between state induced STOP - meaning we no longer subscribe and reconnect timeout
     const { retry } = yield race({
-      retry: call(delay, reconnectTimeout),
+      retry: delay(reconnectTimeout),
       stop: take(stopType),
     });
 
