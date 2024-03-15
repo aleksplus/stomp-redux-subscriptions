@@ -13,6 +13,6 @@ export interface SubscriptionOptions {
   subIdentifier: string;
   selector: ((state: any, payload: any) => any[]) | ((state: any) => any[]);
   startType?: string;
-  stopType?: string;
-  errorType?: string;
+  stopType?: string | string[];
+  errorType?: string | string[];
 }

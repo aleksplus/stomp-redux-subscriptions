@@ -7,6 +7,7 @@ import {
   createSubscriptionHandler,
 } from './handlersFactories';
 import { SubscriptionOptions } from './types';
+import { flatten } from 'lodash';
 
 const parseOptions = (options: SubscriptionOptions) => ({
   ...options,
@@ -26,7 +27,7 @@ export const createSubscriptionWatcher = (
     const { subIdentifier, startType, stopType, errorType, selector } =
       parseOptions(options);
 
-    const startSubscriptionHandler = createStartHandler([stopType, errorType])(
+    const startSubscriptionHandler = createStartHandler(flatten([stopType, errorType]))(
       createChannel,
     );
     const restartHandler = createErrorHandler(startType, stopType);
