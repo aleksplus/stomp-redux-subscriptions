@@ -1,0 +1,43 @@
+{
+  "name": "@p.aleks/stomp-subscriptions",
+  "version": "0.0.1",
+  "description": "Idea of creating subscriptions system with @stomp/stompjs",
+  "main": "lib/index.js",
+  "jsnext:main": "es/index.js",
+  "scripts": {
+    "format": "npx prettier -w src/** --single-quote ",
+    "prepublish": "npm run build && npx json -f package.json -I -e \"delete this.devDependencies\" && npx json -f package.json -I -e \"this.scripts = {}\"",
+    "build": "npm run build:es && npm run build:es5",
+    "build:es": "rimraf types/ && rimraf es/ && tsc --declaration --declarationDir types/",
+    "build:es5": "rimraf lib/ && babel -d lib/ es/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaszczw/stomp-redux-subscriptions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "typings": "./types/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/aleksplus/stomp-redux-subscriptions/issues"
+  },
+  "homepage": "https://github.com/aleksplus/stomp-redux-subscriptions#readme",
+  "dependencies": {
+    "@stomp/stompjs": "6.1.2",
+    "redux-saga": "^1.1.0",
+    "sockjs-client": "^1.5.2"
+  },
+  "devDependencies": {
+    "@p.aleks/redux-saga-subscriptions-manager": "^0.0.2",
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.23.3",
+    "@types/lodash": "^4.17.0",
+    "@types/sockjs-client": "1.5.1",
+    "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^4.9.5"
+  }
+}
