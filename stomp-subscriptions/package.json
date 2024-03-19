@@ -17,7 +17,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "types",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
   "typings": "./types/index.d.ts",
   "bugs": {
     "url": "https://github.com/aleksplus/stomp-redux-subscriptions/issues"

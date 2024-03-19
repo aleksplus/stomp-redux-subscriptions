@@ -9,6 +9,7 @@ There are three libraries in this repository.
 
 - redux-subscriptions-manager
 - redux-saga-subscriptions
+- stomp-subscriptions
 
 They can be used separately to achieve 'reactive' application that is aware of changes on backend, without per case pooling/fetches.
 
