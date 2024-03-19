@@ -19,7 +19,7 @@ const getRetryTimer = () =>
 const RETRY_TIMER = getRetryTimer();
 
 function createWsInstance({
-  beforeConnect,
+  beforeConnect = () => {},
   getSocksJsEndpoint,
   transports = ['websocket'],
 }: CreateWsInstanceConfig): Client {

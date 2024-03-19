@@ -1070,10 +1070,10 @@
   resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.3.tgz#323d72dd25103d0c4fbdce89dadf574a787b1f9b"
   integrity sha512-s88O1aVtXftvp5bCPB7WnmXc5IwOZZ7YPuwNPt+GtOOXpPvad1LfbmjYv+qII7zP6RU2QGnqve27dnLycEnyEQ==
 
-"@p.aleks/redux-subscriptions-manager@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@p.aleks/redux-subscriptions-manager/-/redux-subscriptions-manager-0.0.4.tgz#6650ad47fcba4f8749824a37b2e3e7fc9134e33a"
-  integrity sha512-Y0HzXGJx1nlkKnj5BnGzkYWUYQCLAzRVkjNsqGunAtIGf0QAzTKI21yWrwJiW6oy6YE3kNO3Le/Jvqm1nQJPSA==
+"@p.aleks/redux-subscriptions-manager@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@p.aleks/redux-subscriptions-manager/-/redux-subscriptions-manager-0.0.5.tgz#0bd9d4a682a2ae78ed74782b98dc34dc31719ff3"
+  integrity sha512-ftajxU4Kg3xXhESZYKCOkyetdnFqvhJh1XKrAu+l3AzXEtPdW8tdFbo3+pvnU7WpB96YGHD08u7i4S6XJRyDvg==
   dependencies:
     lodash "^4.17.21"
 

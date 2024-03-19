@@ -11,7 +11,7 @@
   "contributors": [
     "Wojciech Jaszczak (https://github.com/jaszczw/)"
   ],
-  "version": "0.0.2",
+  "version": "0.0.4",
   "scripts": {
     "format": "npx prettier -w src/** --single-quote ",
     "prepublish": "npm run build && npx json -f package.json -I -e \"delete this.devDependencies\" && npx json -f package.json -I -e \"this.scripts = {}\"",
@@ -22,7 +22,7 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "redux-saga": "^1.1.0",
-    "@p.aleks/redux-subscriptions-manager": "0.0.4"
+    "@p.aleks/redux-subscriptions-manager": "0.0.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.9",

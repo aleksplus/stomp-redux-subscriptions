@@ -2,9 +2,12 @@
   "name": "@p.aleks/redux-subscriptions-manager",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "author": "Aleks P. (https://github.com/aleksplus)",
+  "contributors": [
+    "Wojciech Jaszczak (https://github.com/jaszczw/)"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aleksplus/stomp-redux-subscriptions.git"
@@ -18,6 +21,16 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.23.3",
+    "@types/lodash": "^4.17.0",
+    "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^4.9.5"
   },
   "description": "Do not use in new projects.",
   "files": [
