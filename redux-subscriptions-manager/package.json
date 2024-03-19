@@ -1,8 +1,7 @@
 {
   "name": "@p.aleks/redux-subscriptions-manager",
   "main": "lib/index.js",
-  "jsnext:main": "es/index.js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "author": "Aleks P. (https://github.com/aleksplus)",
   "contributors": [

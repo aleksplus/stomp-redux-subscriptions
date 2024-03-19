@@ -6,9 +6,9 @@ Do not use in new projects.
 
 #### Usage example
 ```ts
-import { createWsChannel, getInstance } from './stomp';
+import { createWsChannel, getInstance } from './';
 import { all, cancelled, put, take } from 'redux-saga/effects';
-import { Channel } from 'redux-saga';
+import { EventChannel } from 'redux-saga';
 
 function getInstanceIfNeed() {
   return getInstance({
@@ -20,7 +20,7 @@ function getInstanceIfNeed() {
   });
 }
 
-function* watchChannelEvents(channel: Channel<any>) {
+function* watchChannelEvents(channel: EventChannel<any>) {
   while (true) {
     const event = yield take(channel);
     switch (event.type) {
@@ -50,7 +50,4 @@ function* connectSaga() {
 export default function* () {
   yield all([connectSaga()]);
 }
-
-
-
 ```

@@ -4,7 +4,7 @@ import { eventChannel } from 'redux-saga';
 import SockJS from 'sockjs-client';
 import { ServiceAction } from '@p.aleks/redux-saga-subscriptions-manager';
 
-import { CreateWsInstanceConfig, Unsubscribe } from './types';
+import { CreateWsInstanceConfig, ChannelActions, Unsubscribe } from './types';
 
 import { getHandler } from './handlersManager';
 import { Subscribe } from '@redux-saga/core';
@@ -55,9 +55,8 @@ export const getInstance = (config: CreateWsInstanceConfig): Client => {
   return instance ? instance : (instance = createWsInstance(config));
 };
 
-export function createWsChannel(
-  wsClient: Client,
-  {
+export function createWsChannel(wsClient: Client, actions?: ChannelActions) {
+  const {
     rootServiceConnected = (..._any: any[]): ServiceAction => ({
       type: 'ROOT_CONNECTED',
     }),
@@ -67,8 +66,7 @@ export function createWsChannel(
     serviceFailing = (..._any: any[]): ServiceAction => ({
       type: 'ROOT_FAILING',
     }),
-  },
-) {
+  } = actions || {};
   retryCount = 0;
 
   const subscribe: Subscribe<ServiceAction> = (emit): Unsubscribe => {

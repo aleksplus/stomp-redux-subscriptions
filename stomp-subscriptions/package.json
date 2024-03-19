@@ -1,8 +1,7 @@
 {
   "name": "@p.aleks/stomp-subscriptions",
   "main": "lib/index.js",
-  "jsnext:main": "es/index.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": "Aleks P. (https://github.com/aleksplus)",
   "contributors": [
@@ -25,7 +24,7 @@
     "sockjs-client": "^1.5.2"
   },
   "devDependencies": {
-    "@p.aleks/redux-saga-subscriptions-manager": "^0.0.2",
+    "@p.aleks/redux-saga-subscriptions-manager": "^0.0.5",
     "@babel/cli": "^7.23.9",
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",

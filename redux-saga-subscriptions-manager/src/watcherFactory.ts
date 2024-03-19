@@ -9,9 +9,7 @@ import {
 import { SubscriptionOptions } from './types';
 import { flatten } from 'lodash';
 
-export const parseOptions = (
-  options: SubscriptionOptions,
-): SubscriptionOptions => ({
+export const parseOptions = (options: SubscriptionOptions) => ({
   ...options,
   startType: options.startType || `${options.subIdentifier}/START`,
   stopType: options.stopType || `${options.subIdentifier}/STOP`,
