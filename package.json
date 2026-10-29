@@ -1,0 +1,20 @@
+{
+  "name": "stomp-redux-subscriptions",
+  "private": true,
+  "workspaces": [
+    "redux-subscriptions-manager",
+    "redux-saga-subscriptions-manager",
+    "stomp-subscriptions"
+  ],
+  "scripts": {
+    "build": "npm run build -w redux-subscriptions-manager && npm run build -w redux-saga-subscriptions-manager && npm run build -w stomp-subscriptions",
+    "test": "npm run build && npm run test -w redux-saga-subscriptions-manager && npm run test -w stomp-subscriptions"
+  },
+  "devDependencies": {
+    "@p.aleks/redux-saga-subscriptions-manager": "^0.0.5",
+    "@types/lodash": "^4.17.0",
+    "@types/sockjs-client": "^1.5.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
