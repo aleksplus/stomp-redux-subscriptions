@@ -3,7 +3,7 @@
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "types": "./lib/index.d.ts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "author": "Aleks P. (https://github.com/aleksplus)",
   "contributors": [

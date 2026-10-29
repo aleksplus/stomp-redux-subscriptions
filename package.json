@@ -11,7 +11,7 @@
     "test": "npm run build && npm run test -w redux-saga-subscriptions-manager && npm run test -w stomp-subscriptions"
   },
   "devDependencies": {
-    "@p.aleks/redux-saga-subscriptions-manager": "^0.0.6",
+    "@p.aleks/redux-saga-subscriptions-manager": "^0.0.7",
     "@types/lodash": "^4.17.0",
     "@types/sockjs-client": "^1.5.1",
     "tsdown": "^0.23.4",

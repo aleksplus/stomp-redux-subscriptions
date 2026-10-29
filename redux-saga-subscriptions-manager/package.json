@@ -12,7 +12,7 @@
   "contributors": [
     "Wojciech Jaszczak (https://github.com/jaszczw/)"
   ],
-  "version": "0.0.6",
+  "version": "0.0.7",
   "scripts": {
     "format": "npx prettier -w src/** --single-quote ",
     "prepublishOnly": "npm run build",
@@ -20,9 +20,9 @@
     "build": "tsdown"
   },
   "dependencies": {
+    "@p.aleks/redux-subscriptions-manager": "^0.0.8",
     "lodash": "^4.17.21",
-    "redux-saga": "^1.1.0",
-    "@p.aleks/redux-subscriptions-manager": "^0.0.7"
+    "redux-saga": "^1.1.0"
   },
   "description": "Do not use in new projects.",
   "files": [
