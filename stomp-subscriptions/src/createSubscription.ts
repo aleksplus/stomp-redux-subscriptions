@@ -30,11 +30,14 @@ export const createSubscription = (
 ) => {
   const subId = String(data.subId);
   const initializeSubscription = createSubscriptionInitializer(data, emitter);
+  let stateHandlerFactory:
+    | ReturnType<typeof createStateHandlerFactory>
+    | undefined;
 
   if (stomp?.connected) {
     // after connect
     initializeSubscription(stomp);
-    const stateHandlerFactory = createStateHandlerFactory(emitter, timeout);
+    stateHandlerFactory = createStateHandlerFactory(emitter, timeout);
     const stateHandler = stateHandlerFactory(stomp);
     const eventHandler = createEventHandler(emitter, stateHandler);
     addHandler(subId, eventHandler);
@@ -44,6 +47,7 @@ export const createSubscription = (
 
   return {
     unsubscribe: () => {
+      stateHandlerFactory?.cleanup();
       if (stomp?.connected) {
         removeHandler(subId);
         stomp?.unsubscribe(subId);

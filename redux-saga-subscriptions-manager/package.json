@@ -16,12 +16,13 @@
     "prepublish": "npm run build && npx json -f package.json -I -e \"delete this.devDependencies\" && npx json -f package.json -I -e \"this.scripts = {}\"",
     "build": "npm run build:es && npm run build:es5",
     "build:es": "rimraf types/ && rimraf es/ && tsc --declaration --declarationDir types/",
+    "test": "tsc -p tsconfig.test.json && node --require ./test/alias-subs-manager.cjs --test \".test-build/test/*.test.js\"",
     "build:es5": "rimraf lib/ && babel -d lib/ es/"
   },
   "dependencies": {
     "lodash": "^4.17.21",
     "redux-saga": "^1.1.0",
-    "@p.aleks/redux-subscriptions-manager": "0.0.6"
+    "@p.aleks/redux-subscriptions-manager": "^0.0.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.9",

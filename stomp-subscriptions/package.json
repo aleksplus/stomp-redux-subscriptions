@@ -16,6 +16,7 @@
     "prepublish": "npm run build && npx json -f package.json -I -e \"delete this.devDependencies\" && npx json -f package.json -I -e \"this.scripts = {}\"",
     "build": "npm run build:es && npm run build:es5",
     "build:es": "rimraf types/ && rimraf es/ && tsc --declaration --declarationDir types/",
+    "test": "tsc -p tsconfig.test.json && node --test \".test-build/test/*.test.js\"",
     "build:es5": "rimraf lib/ && babel -d lib/ es/"
   },
  "dependencies": {
