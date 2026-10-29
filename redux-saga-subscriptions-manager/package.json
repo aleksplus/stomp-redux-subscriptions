@@ -17,7 +17,7 @@
     "format": "npx prettier -w src/** --single-quote ",
     "prepublishOnly": "npm run build",
     "test": "tsc -p tsconfig.test.json && node --test \".test-build/test/*.test.js\"",
-    "build": "tsup"
+    "build": "tsdown"
   },
   "dependencies": {
     "lodash": "^4.17.21",

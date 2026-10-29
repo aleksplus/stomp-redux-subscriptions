@@ -16,7 +16,7 @@
   "scripts": {
     "format": "npx prettier -w src/** --single-quote ",
     "prepublishOnly": "npm run build",
-    "build": "tsup"
+    "build": "tsdown"
   },
   "dependencies": {
     "lodash": "^4.17.21"
